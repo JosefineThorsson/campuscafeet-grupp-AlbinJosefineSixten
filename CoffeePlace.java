@@ -7,21 +7,6 @@ public class CoffeePlace {
         printMenu();
     }
 
-    // 2. Skriv ut välkomsttexten och menyn. Använd variabler för till exempel
-    // cafénamn, nästa ordernummer och om
-    // caféet är öppet.
-
-    // 3. Läs användarens val. Använd en while-loop för att visa menyn tills
-    // användaren väljer Avsluta, och en switch för
-    // menyvalen.
-
-    // 4. Kontrollera felaktiga menyval med if/else. Visa ett begripligt meddelande
-    // och gå tillbaka till menyn.
-
-    // 5. Testa String och equals eller equalsIgnoreCase när ni exempelvis frågar om
-    // användaren vill fortsätta med
-    // ja/nej.
-
     static final String placeName = "[placeNameHere]";
     static int nextOrderNumber = 0;
     static boolean currentlyOpen = false;
@@ -108,84 +93,4 @@ public class CoffeePlace {
         }
 
     } 
-}
-
-class Bestallning   {
-    private int orderNumber;
-    private String customerName;
-    private Produkt product;
-    private OrderStatus status;
-
-    // Skapar konstruktor
-    Bestallning(int a, String b, Product c, OrderStatus d)  {
-        this.orderNumber = a;
-        this.customerName = b;
-        this.product = c;
-        this.status = d;
-    }
-
-    // Getter - hämta ordernummer
-    int getOrderNumber() {
-        return orderNumber;
-    }
-
-    // Setter - ändra ordernummer
-    void setOrderNumber(int orderNumber)    {
-        this.orderNumber += 1;
-    }
-}
-
-abstract class Produkt  {
-    abstract void describeProduct();
-}
-
-class Kaffe extends Produkt implements Tillagbar {
-    Kaffe(int orderNumber, String customerName, Produkt product, OrderStatus status)    {
-        super(orderNumber, customerName, product, status);
-    }
-
-    @Override
-    void describeProduct()  {
-        System.out.println("Jag dricker kaffe!");
-    }
-
-    public void tillagar()  {
-        System.out.println("Brygger kaffe!");
-    }
-}
-
-class Macka extends Produkt implements Tillagbar {
-    Macka(int orderNumber, String customerName, Produkt product, OrderStatus status)    {
-        super(orderNumber, customerName, product, status);
-    }
-
-    @Override
-    void describeProduct()  {
-        System.out.println("Jag äter en macka!");
-    }
-
-    public void tillagar()  {
-        System.out.println("Brer en macka!");
-    }
-}
-
-class Flaskvatten extends Produkt   {
-    Flaskvatten(int orderNumber, String customerName, Produkt product, OrderStatus status)  {
-        super(orderNumber, customerName, product, status);
-    }
-
-    @Override
-    void describeProduct()  {
-        System.out.println("Jag dricker laskvatten!");
-    }
-}
-
-interface Tillagbar {
-    void tillagar();
-}
-
-enum OrderStatus    {
-    NY,
-    KLAR,
-    HAMTAD
 }
