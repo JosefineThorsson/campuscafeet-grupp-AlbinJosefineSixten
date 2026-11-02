@@ -108,5 +108,84 @@ public class CoffeePlace {
         }
 
     } 
+}
 
+class Bestallning   {
+    private int orderNumber;
+    private String customerName;
+    private Produkt product;
+    private OrderStatus status;
+
+    // Skapar konstruktor
+    Bestallning(int a, String b, Product c, OrderStatus d)  {
+        this.orderNumber = a;
+        this.customerName = b;
+        this.product = c;
+        this.status = d;
+    }
+
+    // Getter - hämta ordernummer
+    int getOrderNumber() {
+        return orderNumber;
+    }
+
+    // Setter - ändra ordernummer
+    void setOrderNumber(int orderNumber)    {
+        this.orderNumber += 1;
+    }
+}
+
+abstract class Produkt  {
+    abstract void describeProduct();
+}
+
+class Kaffe extends Produkt implements Tillagbar {
+    Kaffe(int orderNumber, String customerName, Produkt product, OrderStatus status)    {
+        super(orderNumber, customerName, product, status);
+    }
+
+    @Override
+    void describeProduct()  {
+        System.out.println("Jag dricker kaffe!");
+    }
+
+    public void tillagar()  {
+        System.out.println("Brygger kaffe!");
+    }
+}
+
+class Macka extends Produkt implements Tillagbar {
+    Macka(int orderNumber, String customerName, Produkt product, OrderStatus status)    {
+        super(orderNumber, customerName, product, status);
+    }
+
+    @Override
+    void describeProduct()  {
+        System.out.println("Jag äter en macka!");
+    }
+
+    public void tillagar()  {
+        System.out.println("Brer en macka!");
+    }
+}
+
+class Flaskvatten extends Produkt   {
+    Flaskvatten(int orderNumber, String customerName, Produkt product, OrderStatus status)  {
+        super(orderNumber, customerName, product, status);
+    }
+
+    @Override
+    void describeProduct()  {
+        System.out.println("Jag dricker laskvatten!");
+    }
+}
+
+interface Tillagbar {
+    void tillagar();
+}
+
+enum OrderStatus    {
+    NY,
+    KLAR,
+    HAMTAD
 }
