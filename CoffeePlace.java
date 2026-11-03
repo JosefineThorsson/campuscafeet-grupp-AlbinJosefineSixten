@@ -1,4 +1,4 @@
-import java.util.Scanner;
+//import java.util.Scanner;
 import java.util.*;
 
 public class CoffeePlace {
@@ -7,23 +7,10 @@ public class CoffeePlace {
         printMenu();
     }
 
-    // 2. Skriv ut välkomsttexten och menyn. Använd variabler för till exempel
-    // cafénamn, nästa ordernummer och om
-    // caféet är öppet.
-
-    // 3. Läs användarens val. Använd en while-loop för att visa menyn tills
-    // användaren väljer Avsluta, och en switch för
-    // menyvalen.
-
-    // 4. Kontrollera felaktiga menyval med if/else. Visa ett begripligt meddelande
-    // och gå tillbaka till menyn.
-
-    // 5. Testa String och equals eller equalsIgnoreCase när ni exempelvis frågar om
-    // användaren vill fortsätta med
-    // ja/nej.
-
     static final String placeName = "[placeNameHere]";
-    static int nextOrderNumber = 0;
+    static int nextOrderNumber = 1;
+    static String customerName;
+    static Produkt valdProdukt;
     static boolean currentlyOpen = false;
 
     static void printMenu() {
@@ -76,6 +63,23 @@ public class CoffeePlace {
 
                     case 2:
 
+                        // Registrera en ny order
+                        Bestallning order = ProdukterBestallningar.registerNewOrder(
+                            nextOrderNumber,
+                            customerName,
+                            valdProdukt
+                        );
+
+                        if (order != null)  {
+                            nextOrderNumber++;
+
+                            //Lägg till order i List och Queue
+
+                            
+                            // Skriv ut kvitto och gå vidare till nästa order
+                            ProdukterBestallningar.printKvitto(order);
+                        }
+
                         continue;
 
                     case 3:
@@ -108,5 +112,4 @@ public class CoffeePlace {
         }
 
     } 
-
 }
